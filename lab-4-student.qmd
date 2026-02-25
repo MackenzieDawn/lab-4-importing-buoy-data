@@ -174,7 +174,11 @@ Now that are data is "analytic ready", go ahead and read in your clean data and 
 buoy_final %>% 
   ggplot(aes(x = factor(mm), y = atmp, color = factor(mm))) +
     geom_jitter(alpha = 0.25) +
-    geom_line(aes(x = mm, y = atmp)) +
+   geom_smooth(aes(x = mm, y = atmp, group = 1),
+    method = "loess",
+    color = "black",
+    se = FALSE,
+    linewidth = 1.3) +
   labs(
     title = "Monterey Bay Canyon Air Temperature in 2025",
     x = "Month in 2025",
